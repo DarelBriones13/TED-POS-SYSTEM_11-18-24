@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Management</title>
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/categories.css"> <!-- Your custom styles -->
+</head>
+<body>
+    <%- include('partials/sidebar') %>
+    
+    <main>
+        <div class="table-container">
+            <div class="header">
+                <h2>Category List</h2>
+                <button class="add-category-btn" id="openCategoryModalBtn">
+                    <i class='bx bx-plus'></i> Add Category
+                </button>
+            </div>
+
+            <div class="table-controls">
+                <label for="entries-count">Show
+                    <select id="entries-count">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                    </select>
+                    entries
+                </label>
+
+                <div class="search-box">
+                    <input type="text" id="search" placeholder="Search category...">
+                </div>
+            </div>
+
+            <table id="category-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Category</th>
+                        <th>Description</th> <!-- Added Description Column -->
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Category Rows Will Be Injected Here -->
+                </tbody>
+            </table>
+
+            <div class="table-info">
+                <span id="pagination-info">Showing 1 to X of Y Entities</span>
+                <div class="pagination-controls">
+                    <button class="pagination-btn" id="prev-button">Previous</button>
+                    <button class="pagination-btn" id="next-button">Next</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Category Modal -->
+    <div id="addCategoryModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="closeCategoryModalBtn">&times;</span>
+            <h3>Add Category Form</h3>
+            <form id="categoryForm">
+                <label for="category-name">Category Name</label>
+                <input type="text" id="category-name" required>
+
+                <label for="category-description">Category Description</label>
+                <textarea id="category-description" rows="4" required></textarea>
+
+                <div class="form-actions">
+                    <button type="submit" class="add-btn">Save Category</button>
+                    <button type="button" class="cancel-btn" id="cancelAdd">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Category Modal -->
+    <div id="editModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h3>Edit Category</h3>
+            <form id="editCategoryForm">
+                <input type="hidden" id="edit-category-id">
+                
+                <label for="edit-category-name">Category Name</label>
+                <input type="text" id="edit-category-name" required>
+
+                <label for="edit-category-description">Category Description</label>
+                <textarea id="edit-category-description" rows="4" required></textarea>
+
+                <div class="form-actions">
+                    <button type="submit" class="add-btn">Update Category</button>
+                    <button type="button" class="cancel-btn" id="cancelEdit">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/nav&side.js"></script>
+    <script src="/js/category_func.js"></script>
+</body>
+</html>

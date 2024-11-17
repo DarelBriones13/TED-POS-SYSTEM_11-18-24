@@ -1,0 +1,405 @@
+/* General Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  /* Supplier Section */
+  .supplier-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .supplier-header {
+    display: flex;
+    justify-content: space-between; /* Space between the title and the button */
+    align-items: center; /* Vertically align both elements */
+    margin-bottom: 20px;
+  }
+  
+  .supplier-header h2 {
+    margin: 0; /* Ensure the title doesn't have extra margin */
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .add-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .add-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-btn i {
+    margin-right: 5px;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .entries-control {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .entries-select {
+    padding: 8px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .search-bar input {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 8px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .search-bar i {
+    margin-left: 10px;
+    color: #555;
+  }
+  
+  /* Table Styling */
+  .supplier-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .supplier-table th, .supplier-table td {
+    padding: 15px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .supplier-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border: none;
+  }
+  
+  .supplier-table td {
+    background-color: #ffffff;
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
+  .supplier-table tr:nth-child(even) td {
+    background-color: #f9f9f9;
+  }
+  
+  .supplier-table tr:hover td {
+    background-color: #f1f8ff;
+  }
+  
+  .supplier-table td i {
+    margin-right: 10px;
+    cursor: pointer;
+    color: #007bff;
+    transition: color 0.3s;
+  }
+  
+  .supplier-table td i:hover {
+    color: #0056b3;
+  }
+  
+  /* Pagination Styling */
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .page-controls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .page-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .page-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .current-page {
+    font-weight: bold;
+    color: #333;
+  }
+
+
+  /* Modal Background */
+  .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+      align-items: center;
+      justify-content: center;
+  }
+
+  /* Modal Content */
+  .modal-content {
+      background-color: #ffffff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #007bff;
+  font-size: 22px;
+}
+
+.modal-header .close-btn {
+  color: #333;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
+  .close-btn:hover {
+      color: #ff5722;
+  }
+
+  /* Modal Form */
+  .modal-form {
+      display: flex;
+      flex-direction: column;
+  }
+
+  /* Form Grid */
+  .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px 20px;
+  }
+
+  /* Form Group */
+  .form-group {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .form-group label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+  }
+
+  .form-group input,
+  .form-group select {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+  }
+
+  /* Modal Actions */
+  .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+  }
+
+  /* Add Button */
+  .btn-add {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 10px;
+      font-weight: 600;
+      font-size: 14px;
+  }
+
+  .btn-add:hover {
+      background-color: #0056b3;
+  }
+
+  /* Cancel Button */
+  .btn-cancel {
+      background-color: #ff5722;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+  }
+
+  .btn-cancel:hover {
+      background-color: #e64a19;
+  }
+
+  /* Modal Content - shared styling for all modals */
+  .modal-content {
+      background-color: #ffffff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Form labels */
+  .modal-form label {
+      font-weight: 600;
+      color: #333;
+      margin-top: 10px;
+      display: block;
+  }
+
+  /* Input and select styling */
+  .modal-form input, 
+  .modal-form select {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      background-color: #f9f9f9;
+  }
+
+  /* Read-only styling for inputs */
+  .modal-form input[readonly] {
+      background-color: #e9ecef; /* Light gray to indicate read-only */
+  }
+
+  /* Modal header styling */
+  .modal-header h3 {
+      margin: 0;
+      color: #007bff;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+  }
+
+  /* Close button styling */
+  .modal-header .close-btn {
+      color: #333;
+      font-size: 22px;
+      cursor: pointer;
+  }
+
+  .close-btn:hover {
+      color: #ff5722;
+  }
+
+  /* Actions styling */
+  .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+  }
+
+  /* Cancel button */
+  .btn-cancel {
+      background-color: #ff5722;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+  .btn-cancel:hover {
+      background-color: #e64a19;
+  }
+
+
+  /* Media Queries for Smaller Screens */
+  @media (max-width: 500px) {
+      .modal-content {
+          width: 95%;
+          padding: 15px;
+      }
+
+      .form-grid {
+          grid-template-columns: 1fr;
+      }
+
+      .btn-add,
+      .btn-cancel {
+          width: 100%;
+          padding: 10px;
+      }
+  }
+

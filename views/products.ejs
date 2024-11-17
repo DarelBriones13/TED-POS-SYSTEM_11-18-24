@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/products.css" />
+    <title>Dashboard</title>
+    <!-- Include jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+  <body>
+    <%- include('partials/sidebar') %>
+      <!-- MAIN -->
+      <main>
+        <!-- Product List Section -->
+        <section class="product-list-section">
+          <div class="table-container">
+            <div class="table-header">
+              <h2>Product List</h2>
+            </div>
+
+            <div class="table-controls">
+              <label for="show-entries"
+                >Show
+                <select id="show-entries">
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                </select>
+                Entries
+              </label>
+              <div class="search-box">
+                <input type="text" placeholder="Search" />
+                <i class="bx bx-search"></i>
+              </div>
+            </div>
+
+            <table class="product-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Category</th>
+                  <th>Product Name</th>
+                  <th>Product Model</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="productList">
+                <!-- Dynamic product rows will be populated here -->
+            </tbody>
+            </table>
+
+            <div class="table-footer">
+              <p>Showing 1 to 3 of 3 entries</p>
+              <div class="pagination">
+                <button class="btn-pagination">Previous</button>
+                <button class="btn-page active">1</button>
+                <button class="btn-pagination">Next</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- MAIN -->
+    <!-- NAVBAR -->
+
+    <script src="/js/nav&side.js"></script>
+    <script src="/js/product.js"></script>
+  </body>
+</html>

@@ -1,0 +1,194 @@
+/* General reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Main layout styling */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f9ff;
+  padding: 20px;
+}
+
+/* Container styling */
+.order-container {
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Month Selector Styling */
+.month-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.month-selector label {
+  margin-right: 12px;
+  color: #0056b3;
+  font-weight: 600;
+}
+
+.month-selector .input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.month-selector input[type="text"] {
+  padding: 10px 40px 10px 14px;
+  font-size: 1rem;
+  border: 1px solid #d0e2ff;
+  border-radius: 6px;
+  width: 200px;
+  color: #0056b3;
+  transition: box-shadow 0.3s ease;
+}
+
+.month-selector input[type="text"]:focus {
+  box-shadow: 0 4px 10px rgba(0, 91, 255, 0.2);
+  border-color: #007bff;
+}
+
+.month-selector i {
+  position: absolute;
+  right: 12px;
+  color: #007bff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  font-size: 1rem;
+  color: #333;
+}
+
+th, td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #e0f2ff;
+}
+
+th {
+  background-color: #e8f4ff;
+  font-weight: 600;
+  color: #0056b3;
+}
+
+tr:nth-child(even) {
+  background-color: #f7fbff;
+}
+
+/* Button container to center the print button */
+.button-container {
+  display: flex;
+  justify-content: center; /* Center the button */
+  margin-top: 20px;
+}
+
+/* Print button styling */
+.print-button {
+  padding: 14px;
+  font-size: 1rem;
+  width: 20%;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0056b3;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.print-button:hover {
+  background-color: #004392;
+}
+
+/* Flatpickr Month Picker Styling */
+.flatpickr-calendar {
+  background-color: #fff;
+  border: 1px solid #d0e2ff;
+  border-radius: 10px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.flatpickr-current-month {
+  font-size: 18px;
+  color: #007bff;
+  font-weight: 700;
+  padding: 10px;
+}
+
+/* Styling for month selection */
+.flatpickr-monthSelect-months {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  padding: 16px;
+}
+
+.flatpickr-monthSelect-months .flatpickr-monthSelect-month {
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #0056b3;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.flatpickr-monthSelect-months .flatpickr-monthSelect-month:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.flatpickr-monthSelect-months .flatpickr-monthSelect-month.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Navigation arrows */
+.flatpickr-prev-month, .flatpickr-next-month {
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.flatpickr-prev-month:hover, .flatpickr-next-month:hover {
+  color: #004392;
+}
+
+/* Improved input field styling */
+#month {
+  padding: 12px;
+  width: 200px;
+  border: 1px solid #007bff;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #333;
+  transition: box-shadow 0.3s ease;
+}
+
+#month:focus {
+  border-color: #0056b3;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}

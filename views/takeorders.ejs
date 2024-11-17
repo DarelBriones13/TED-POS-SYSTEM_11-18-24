@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="/css/takeorders.css" />
+    <title>Ted Medic</title>
+</head>
+<body>
+    <%- include('partials/sidebar') %>
+    <!-- MAIN -->
+    <main>
+        <div class="takeOrder-container">
+            <div class="takeOrder-list">
+                <h2>Order List</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th>Orders</th>
+                                <th>Amount</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn decrement-btn"><i class="bx bx-minus"></i></button>
+                                        <input type="number" value="1" min="1" />
+                                        <button class="quantity-btn increment-btn"><i class="bx bx-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td>Product</td>
+                                <td>₱70.00</td>
+                                <td><button class="delete-btn"><i class="bx bx-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn decrement-btn"><i class="bx bx-minus"></i></button>
+                                        <input type="number" value="1" min="1" />
+                                        <button class="quantity-btn increment-btn"><i class="bx bx-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td>Product</td>
+                                <td>₱15.00</td>
+                                <td><button class="delete-btn"><i class="bx bx-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn decrement-btn"><i class="bx bx-minus"></i></button>
+                                        <input type="number" value="1" min="1" />
+                                        <button class="quantity-btn increment-btn"><i class="bx bx-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td>Product</td>
+                                <td>₱15.00</td>
+                                <td><button class="delete-btn"><i class="bx bx-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn decrement-btn"><i class="bx bx-minus"></i></button>
+                                        <input type="number" value="1" min="1" />
+                                        <button class="quantity-btn increment-btn"><i class="bx bx-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td>Product</td>
+                                <td>₱15.00</td>
+                                <td><button class="delete-btn"><i class="bx bx-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn decrement-btn"><i class="bx bx-minus"></i></button>
+                                        <input type="number" value="1" min="1" />
+                                        <button class="quantity-btn increment-btn"><i class="bx bx-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td>Product</td>
+                                <td>₱15.00</td>
+                                <td><button class="delete-btn"><i class="bx bx-trash"></i></button></td>
+                            </tr>
+                            <!-- Add more rows similarly -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="total-section">
+                    <p><strong>Total:</strong> <span>₱32.75</span></p>
+                </div>
+            </div>
+            
+            
+            
+            <div class="product-selection">
+                <h2>Select Products</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Enter Product Name" />
+                    <button><i class="bx bx-search"></i></button>
+                    <select>
+                        <option value="all">All</option>
+                        <option value="all">Laptops</option>
+                        <option value="all">Monitors</option>
+                        <!-- Add more options here -->
+                    </select>
+                </div>
+
+                  <!-- Product Picker Section -->
+          <div class="ProductPicker">
+            <div class="product-grid">
+              <div class="product-placeholder">
+                <img src="images/Gigabyte.jpg" alt="Product 1" />
+                <p>Gigabyte H510M</p>
+                <p class="Model">Model: 1</p>
+                <span class="price-tag">₱1099.00</span>
+              </div>
+              <div class="product-placeholder">
+                <img src="images/sam.jpeg" alt="Product 2" />
+                <p>Samsung24 Curve</p>
+                <p class="Model">Model: 1</p>
+                <span class="price-tag">₱100.00</span>
+              </div>
+              <div class="product-placeholder">
+                <img src="images/rogAlly.jpg" alt="Product 3" />
+                <p>Rog Ally</p>
+                <p class="Model">Model: 1</p>
+                <span class="price-tag">₱49,000.00</span>
+              </div>
+              <div class="product-placeholder">
+                <img src="images/switch.jpg" alt="Product 4" />
+                <p>Nintendo Switch</p>
+                <p class="Model">Model: 2</p>
+                <span class="price-tag">₱13,999.00</span>
+              </div>
+              <div class="product-placeholder">
+                <img src="images/onehand.jpg" alt="Product 5" />
+                <p>Mechkeyboard</p>
+                <p class="Model">Model: 1</p>
+                <span class="price-tag">₱5,999.00</span>
+              </div>
+              <div class="product-placeholder">
+                <img src="path/to/image6.jpg" alt="Product 6" />
+                <p>Product 6</p>
+                <p class="Models">Model: 1</p>
+                <span class="price-tag">₱10.00</span>
+              </div>
+              <div class="product-placeholder">
+                <img src="images/Razercob.jpg" alt="Product 7" />
+                <p>Razer Mouse</p>
+                <p class="Model">Model: 1</p>
+                <span class="price-tag">₱4,999.00</span>
+              </div>
+              <div class="product-placeholder">
+                <img src="images/mac.jpg" alt="Product 8" />
+                <p>Mac Laptop</p>
+                <p class="Model">Model: 1</p>
+                <span class="price-tag">₱10.00</span>
+              </div>
+              <div class="product-placeholder">
+                <img src="images/asus.jpg" alt="Product 9" />
+                <p>Asus Laptop</p>
+                <p class="Model">Model: 1</p>
+                <span class="price-tag">₱10.00</span>
+              </div>
+              <div class="product-placeholder">
+                <img src="images/asus.jpg" alt="Product 9" />
+                <p>Asus Laptop</p>
+                <p class="Model">Model: 1</p>
+                <span class="price-tag">₱10.00</span>
+              </div>
+            </div>
+          </div>
+                
+                
+                
+                <div class="action-buttons">
+                    <button class="save-btn">Pay</button>
+                    <button class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Payment -->
+        <button class="save-btn">Pay</button>
+
+        <!-- Payment Modal -->
+        <div id="paymentModal" class="modal">
+            <div class="modal-content">
+                <h3>Payment</h3>
+        
+                <label for="amountPayable">Amount Payable</label>
+                <input type="text" id="amountPayable" value="₱1000" readonly />
+        
+                <label for="amountTendered">Amount Tendered</label>
+                <input type="number" id="amountTendered" placeholder="Enter amount tendered" />
+        
+                <label for="change">Change</label>
+                <input type="text" id="change" readonly />
+        
+                <!-- Modal actions -->
+                <div class="modal-actions">
+                    <button class="submit-payment-btn">Submit Payment</button>
+                    <button class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+  </div>
+
+    </main>
+    <!-- MAIN -->
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="/js/nav&side.js"></script>
+    <script src="/js/takeorders.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/supplier.css" />
+    <title>Supplier</title>
+  </head>
+  <body>
+    <%- include('partials/sidebar') %>
+    <main>
+      <section class="supplier-container">
+        <div class="supplier-header">
+          <h2>Supplier List</h2>
+          <button class="add-btn" id="openAddSupplierModal">
+            <i class="bx bx-plus"></i> Add Supplier
+          </button>
+        </div>
+        <div class="controls">
+          <div class="entries-control">
+            <label for="entries">Show</label>
+            <select id="entries" class="entries-select">
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
+            <span>Entries</span>
+          </div>
+          <div class="search-bar">
+            <input type="text" id="supplierSearch" placeholder="Search" />
+            <i class="bx bx-search"></i>
+          </div>
+        </div>
+        <table class="supplier-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Full Name</th>
+              <th>Contact No.</th>
+              <th>Address</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dynamic rows will be populated here -->
+          </tbody>
+        </table>
+        <div class="pagination">
+          <span>
+            Showing <span id="showing-count">0</span> of
+            <span id="total-count">0</span> Entities
+          </span>
+          <div class="page-controls">
+            <button class="page-btn" id="previous-page">Previous</button>
+            <span class="current-page" id="current-page">1</span>
+            <button class="page-btn" id="next-page">Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal Section for Add Supplier -->
+    <div class="modal" id="addItemModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="bx bx-plus"></i> Add Supplier</h3>
+          <span class="close-btn" id="closeAddSupplierModal">&times;</span>
+        </div>
+        <form class="modal-form" id="addSupplierForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Supplier FullName</label>
+              <input type="text" placeholder="Supplier FullName" required />
+            </div>
+            <div class="form-group">
+              <label>Supplier Contact No.</label>
+              <input type="text" placeholder="Contact Number" required />
+            </div>
+            <div class="form-group">
+              <label>Supplier Address</label>
+              <input type="text" placeholder="Supplier Address" required />
+            </div>
+            <div class="form-group">
+              <label>Status</label>
+              <select>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="submit" class="btn-add">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Item Modal -->
+<div class="modal" id="editItemModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3><i class="bx bx-edit"></i> Edit Item</h3>
+      <span class="close-btn" id="closeEditSupplierModal">&times;</span> <!-- Ensure this ID matches -->
+    </div>
+    <form class="modal-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Supplier Name</label>
+          <input type="text" placeholder="Supplier Name" />
+        </div>
+        <div class="form-group">
+          <label>Supplier Contact No.</label>
+          <input type="text" placeholder="Contact Number" />
+        </div>
+        <div class="form-group">
+          <label>Supplier Address</label>
+          <input type="text" placeholder="Supplier Address" />
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-add">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="/js/nav&side.js"></script>
+    <script src="/js/supplier.js"></script>
+  </body>
+</html>

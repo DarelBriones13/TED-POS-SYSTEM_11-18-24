@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/salereport.css" />
+  <title>Dashboard</title>
+
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+  <%- include('partials/sidebar') %>
+
+  <!-- MAIN -->
+  <main>
+    <div class="order-container">
+      <!-- Month Selector -->
+      <div class="month-selector">
+        <label for="month">Month</label>
+        <div class="input-container">
+          <input type="text" id="month" placeholder="Select Month" />
+          <i class='bx bx-calendar' onclick="document.getElementById('month')._flatpickr.open();"></i>
+        </div>        
+      </div>
+
+      <!-- Order Table -->
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Invoice</th>
+            <th>Order No.</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>09/01/2024</td>
+            <td>INV-001</td>
+            <td>1001</td>
+            <td>$150.00</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>09/05/2024</td>
+            <td>INV-002</td>
+            <td>1002</td>
+            <td>$200.00</td>
+          </tr>
+          <!-- Add more rows as needed -->
+          <tr>
+            <td colspan="4" style="text-align: right; font-weight: bold;">Total</td>
+            <td>$350.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Print Button -->
+      <div class="button-container">
+        <button class="print-button" onclick="window.print()">Print</button>
+      </div>
+    </div>
+  </main>
+  <!-- MAIN -->
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="/js/nav&side.js"></script>
+  <script src="/js/salereport.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
+</body>
+</html>

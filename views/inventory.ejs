@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Select2 CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <!-- jQuery (required for Select2) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <link rel="stylesheet" href="/css/inventory.css" />
+    <title>Inventory Dashboard</title>
+  </head>
+  <body>
+    <%- include('partials/sidebar') %>
+    <main>
+      <section class="inventory-container">
+        <div class="inventory-header">
+          <h2>Inventory List</h2>
+          <button class="add-btn"><i class="bx bx-plus"></i> Add Items</button>
+        </div>
+        <div class="controls">
+          <div class="entries-control">
+            <label for="entries">Show</label>
+            <select id="entries" class="entries-select">
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
+            <span>Entries</span>
+          </div>
+          <div class="search-bar">
+            <input type="text" id="search" placeholder="Search" />
+            <i class="bx bx-search"></i>
+          </div>
+        </div>
+        <table class="inventory-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Product Name</th>
+              <th>Product Model</th>
+              <th>Supplier Name</th>
+              <th>Date Received</th>
+              <th>Stock</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryList">
+            <!-- Dynamic inventory rows will be populated here -->
+          </tbody>
+        </table>
+        <!-- Pagination Control -->
+        <div class="pagination">
+          <span id="pagination-info">Showing 1 to 3 of 3 entries</span>
+          <div class="page-controls">
+            <button id="prev-button" class="page-btn">Previous</button>
+            <span class="current-page">1</span>
+            <button id="next-button" class="page-btn">Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+ <!-- Modal Add Section -->
+<div class="modal" id="addItemModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3><i class="bx bx-plus"></i> Add Item</h3>
+      <span class="close-btn">&times;</span>
+    </div>
+    <form class="modal-form" id="addItemForm" enctype="multipart/form-data">
+      <div class="form-grid">
+          <div class="form-group">
+              <label>Product Name</label>
+              <input type="text" id="productName" name="productName" placeholder="Product Name" required />
+          </div>
+          <div class="form-group">
+              <label>Product Model</label>
+              <input type="text" id="productModel" name="productModel" placeholder="Product Model" required />
+          </div>
+          <div class="form-group">
+              <label>Supplier Name</label>
+              <select id="addSupplierName" name="supplierId" style="width: 100%" required>
+                  <option value="">Select Supplier</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label>Categories</label>
+              <select id="addCategories" name="categoryId" style="width: 100%" required>
+                  <option value="">Select Category</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label>Product Image</label>
+              <input type="file" name="productImage" id="productImage" accept="image/*" required />
+          </div>
+          <div class="form-group">
+              <label>Stock</label>
+              <input type="number" id="stock" name="stock" placeholder="Stock" required />
+          </div>
+          <div class="form-group">
+              <label>Date Received</label>
+              <input type="date" id="dateReceived" name="dateReceived" required />
+          </div>
+          <div class="form-group">
+              <label>Status</label>
+              <select id="status" name="status" required>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label>Purchase Price</label>
+              <input type="number" id="purchasePrice" name="purchasePrice" placeholder="Purchase Price" required />
+          </div>
+          <div class="form-group">
+              <label>Selling Price</label>
+              <input type="number" id="sellingPrice" name="sellingPrice" placeholder="Selling Price" required />
+          </div>
+      </div>
+      <div class="modal-actions">
+          <button type="submit" class="btn-add">Add</button>
+      </div>
+  </form>
+  </div>
+</div>
+    <!-- View Item Modal -->
+    <div class="modal" id="viewItemModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="bx bx-show"></i> View Item</h3>
+          <span class="close-btn">&times;</span>
+        </div>
+        <form class="modal-form">
+          <label>Product Name</label>
+          <input type="text" placeholder="Product Name" readonly />
+
+          <label>Product Model</label>
+          <input type="text" placeholder="Product Model" readonly />
+
+          <label>Supplier Name</label>
+          <input type="text" placeholder="Supplier Name" readonly />
+
+          <label>Address</label>
+          <input type="text" placeholder="Supplier Address" readonly />
+
+          <label>Contact Number</label>
+          <input type="text" placeholder="Contact Number" readonly />
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Item Modal -->
+    <div class="modal" id="editItemModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="bx bx-edit"></i> Edit Item</h3>
+          <span class="close-btn">&times;</span>
+        </div>
+        <form class="modal-form" id="editItemForm" enctype="multipart/form-data">
+          <input type="hidden" id="editProductId" name="productId" />
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Product Name</label>
+              <input type="text" id="editProductName" name="productName" placeholder="Product Name" required />
+            </div>
+            <div class="form-group">
+              <label>Product Model</label>
+              <input type="text" id="editProductModel" name="productModel" placeholder="Product Model" required />
+            </div>
+            <div class="form-group">
+              <label>Supplier Name</label>
+              <select id="editSupplierName" name="supplierId" style="width: 100%" required>
+                  <option value="">Select Supplier</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Categories</label>
+              <select id="editCategories" name="categoryId" style="width: 100%" required>
+                  <option value="">Select Category</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Upload New Image</label>
+              <input type="file" name="productImage" id="editProductImage" accept="image/*" />
+            </div>
+            <div class="form-group">
+              <label>Stock</label>
+              <input type="number" id="editStock" name="stock" placeholder="Stock" required />
+            </div>
+            <div class="form-group">
+              <label>Date Received</label>
+              <input type="date" id="editDateReceived" name="dateReceived" required />
+            </div>
+            <div class="form-group">
+              <label>Status</label>
+              <select id="editStatus" name="status" required>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Purchase Price</label>
+              <input type="number" id="editPurchasePrice" name="purchasePrice" placeholder="Purchase Price" required />
+            </div>
+            <div class="form-group">
+              <label>Selling Price</label>
+              <input type="number" id="editSellingPrice" name="sellingPrice" placeholder="Selling Price" required />
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="submit" class="btn-add">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="/js/nav&side.js"></script>
+    <script src="/js/inventory.js"></script>
+  </body>
+</html>

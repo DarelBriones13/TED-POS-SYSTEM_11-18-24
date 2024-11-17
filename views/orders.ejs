@@ -1,0 +1,106 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+        rel="stylesheet"
+      />
+      <link rel="stylesheet" href="/css/orderList.css" />
+      <title>Dashboard</title>
+    </head>
+    <body>
+      <%- include('partials/sidebar') %>
+  <!-- MAIN -->
+  <main>
+      <div class="orders-table">
+        <h3>List of Orders</h3>
+        
+        <!-- Controls for "Show Entries" and "Search" -->
+        <div class="table-controls">
+          <label for="entries">Show 
+            <select id="entries">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select> 
+            Entries
+          </label>
+    
+          <label for="search">Search: 
+            <input type="text" id="search" placeholder="Search...">
+          </label>
+        </div>
+    
+        <!-- Table Structure -->
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Invoice</th>
+              <th>Order Number</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>2023-09-15</td>
+              <td>INV1234</td>
+              <td>1001</td>
+              <td>$250</td>
+              <td>Paid</td>
+              <td>
+                <a href="#" class="edit"><i class="bx bx-edit"></i></a>
+                <a href="#" class="delete"><i class="bx bx-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>2023-09-16</td>
+              <td>INV1235</td>
+              <td>1002</td>
+              <td>$300</td>
+              <td>Unpaid</td>
+              <td>
+                <a href="#" class="edit"><i class="bx bx-edit"></i></a>
+                <a href="#" class="delete"><i class="bx bx-trash"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>2023-09-17</td>
+              <td>INV1236</td>
+              <td>1003</td>
+              <td>$150</td>
+              <td>Paid</td>
+              <td>
+                <a href="#" class="edit"><i class="bx bx-edit"></i></a>
+                <a href="#" class="delete"><i class="bx bx-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <!-- Pagination -->
+        <div class="pagination">
+          <span>Previews</span>
+          <span>1</span>
+          <span>Next</span>
+        </div>
+      </div>
+    </main>  
+    <!-- MAIN -->
+    
+      </section>
+      <!-- NAVBAR -->
+
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <script src="/js/nav&side.js"></script>
+    </body>
+  </html>

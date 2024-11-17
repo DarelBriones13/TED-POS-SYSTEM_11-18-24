@@ -1,0 +1,357 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Main bundle layout container */
+.takeOrder-container {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f5f7fa;
+    height: calc(100vh - 40px); /* Subtract padding or margins if needed */
+    overflow-y: auto;
+}
+
+/* Bundle List Section */
+.takeOrder-list {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 97%; /* Make it flexible to the container */
+}
+
+h2 {
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #444444;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* Table styling */
+
+.table-container {
+    max-height: 300px; /* Set a fixed height to make the container scrollable */
+    overflow-y: scroll;  /* Enables vertical scroll */
+    overflow-x: hidden;  /* Disables horizontal scroll (bottom scroll) */
+    padding-right: 15px; /* Adds space on the right side for the scrollbar */
+    margin-right: -15px; /* Shifts the content to the left, reducing overlap with scrollbar */
+}
+
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th, .table-container td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-control button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.quantity-control input[type="number"] {
+    width: 40px;
+    text-align: center;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+thead th {
+    text-align: left;
+    padding: 12px 0;
+    font-weight: 700;
+    color: #777;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody td {
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    color: #555;
+}
+
+/* Quantity control buttons */
+.quantity-control {
+    display: flex;
+    gap: 1px;
+    align-items: center;
+}
+
+.quantity-control button {
+    padding: 2px 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.quantity-control input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px;
+}
+
+.total-section {
+    margin: 25px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f09d; /* Light background for the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #007bff; /* Scrollbar thumb color */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 3px solid #f0f0f0; /* Padding between the thumb and track */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #003f7f; /* Even darker shade when active */
+}
+
+/* Product selection section */
+.product-selection {
+    flex: 2;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 97%; /* Keep the entire section's height fixed */
+    display: flex;
+    flex-direction: column; /* Ensure the children stack vertically */
+}
+
+/* Search Bar should remain static */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.search-bar input:focus {
+    border-color: #007bff;
+}
+
+.search-bar button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* ProductPicker should be scrollable */
+.ProductPicker {
+    flex-grow: 1; /* Fills remaining space in the product-selection */
+    overflow-y: auto; /* Make this section scrollable */
+}
+
+/* Product placeholder styles */
+.product-placeholder {
+    background-color: #ffffff; /* Changed to white for contrast */
+    border: 1px solid #ddd; /* Add a border */
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center align content */
+    justify-content: center; /* Center content */
+    text-align: center; /* Center text */
+    padding: 10px; /* Add padding around the content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+}
+
+.product-placeholder:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Product Image */
+.product-placeholder img {
+    max-height: 80px; /* Set a max height for the image */
+    max-width: 100%; /* Ensure the image doesn't overflow */
+    border-radius: 4px; /* Optional: add rounding to image corners */
+    margin-bottom: 5px; /* Space between image and text */
+}
+
+/* Product Name */
+.product-placeholder p {
+    margin: 5px 0; /* Space between image and product name */
+    font-size: 1rem; /* Larger font size for better visibility */
+    color: #333; /* Darker color for better contrast */
+    font-weight: bold; /* Make product name bold */
+}
+
+/* Price Tag */
+.price-tag {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    padding: 5px 10px; /* Padding around text */
+    border-radius: 15px; /* Rounded edges */
+    font-size: 0.85rem; /* Slightly smaller font size */
+    margin-top: 5px; /* Space above the price tag */
+}
+
+/* Grid layout for products */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Ensure they fit the screen */
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Center the buttons vertically */
+}
+
+.save-btn, .cancel-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+p.Model{
+    font-size: smaller;
+    font-weight: normal;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #c82333;
+}
+
+.delete-btn {
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #d9534f;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Ensure they fit the screen */
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Center the buttons vertically */
+}
+
+.save-btn, .cancel-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #c82333;
+}
+
+
