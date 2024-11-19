@@ -18,29 +18,79 @@ routes.get("/login", (req, res) => {
 
 routes.post("/login", login); // Login form submission
 
+
+
+// Add this route to your router.js
+routes.get("/logout", (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Error destroying session:', err);
+      return res.status(500).send('Internal server error');
+    }
+    res.redirect("/login"); // Redirect to login page after logout
+  });
+});
+
 // -------------------- DASHBOARD AND PAGE ROUTES --------------------
 // Serve dashboard.ejs after successful login
 routes.get("/dashboard", (req, res) => {
-  res.render("dashboard", { activePage: 'dashboard' });
+  const userType = req.session.userType; // Get userType from session
+  res.render("dashboard", { activePage: 'dashboard', userType }); // Pass userType to the view
 });
 
-// Serve other page routes
-routes.get("/orders", (req, res) => res.render("orders", { activePage: 'orders' }));
-routes.get("/takeorders", (req, res) => res.render("takeorders", { activePage: 'takeorders' }));
-routes.get("/inventory", (req, res) => res.render("inventory", { activePage: 'inventory' }));
-routes.get("/supplier", (req, res) => res.render("supplier", { activePage: 'supplier' }));
-routes.get("/products", (req, res) => res.render("products", { activePage: 'products' }));
-routes.get("/bundleslist", (req, res) => res.render("bundleslist", { activePage: 'bundleslist' }));
-routes.get("/addbundle", (req, res) => res.render("addbundle", { activePage: 'addbundle' }));
-routes.get("/editBundle", (req, res) => res.render("editBundle", { activePage: 'editBundle' }));
-routes.get("/salereport", (req, res) => res.render("salereport", { activePage: 'salereport' }));
+// Serve other page routes with userType
+routes.get("/orders", (req, res) => {
+  const userType = req.session.userType; // Get userType from session
+  res.render("orders", { activePage: 'orders', userType }); // Pass userType to the view
+});
+
+routes.get("/takeorders", (req, res) => {
+  const userType = req.session.userType; // Get userType from session
+  res.render("takeorders", { activePage: 'takeorders', userType }); // Pass userType to the view
+});
+
+routes.get("/inventory", (req, res) => {
+  const userType = req.session.userType; // Get userType from session
+  res.render("inventory", { activePage: 'inventory', userType }); // Pass userType to the view
+});
+
+routes.get("/supplier", (req, res) => {
+  const userType = req.session.userType; // Get userType from session
+  res.render("supplier", { activePage: 'supplier', userType }); // Pass userType to the view
+});
+
+routes.get("/products", (req, res) => {
+  const userType = req.session.userType; // Get userType from session
+  res.render("products", { activePage: 'products', userType }); // Pass userType to the view
+});
+
+routes.get("/bundleslist", (req, res) => {
+  const userType = req.session.userType; // Get userType from session
+  res.render("bundleslist", { activePage: 'bundleslist', userType }); // Pass userType to the view
+});
+
+routes.get("/addbundle", (req, res) => {
+  const userType = req.session.userType; // Get userType from session
+  res.render("addbundle", { activePage: 'addbundle', userType }); // Pass userType to the view
+});
+
+routes.get("/editBundle", (req, res) => {
+  const userType = req.session.userType; // Get userType from session
+  res.render("editBundle", { activePage: 'editBundle', userType }); // Pass userType to the view
+});
+
+routes.get("/salereport", (req, res) => {
+  const userType = req.session.userType; // Get userType from session
+  res.render("salereport", { activePage: 'salereport', userType }); // Pass userType to the view
+});
 
 // -------------------- CATEGORY ROUTES --------------------
 // Get all categories and serve categories.ejs
 routes.get("/categories", async (req, res) => {
   try {
     const categories = await getCategories();
-    res.render("categories", { categories, activePage: 'categories' });
+    const userType = req.session.userType; // Get userType from session
+    res.render("categories", { categories, activePage: 'categories', userType }); // Pass userType to the view
   } catch (error) {
     console.error("Error fetching categories:", error);
     res.status(500).send('Internal server error');
@@ -60,7 +110,7 @@ routes.get("/categories/list", async (req, res) => {
 
 // Update category by ID
 routes.put("/categories/:id", async (req, res) => {
-  const categoryId = req.params.id;
+  const categoryId = req .params.id;
   const { category_name, category_description } = req.body;
 
   try {
@@ -86,7 +136,8 @@ routes.post("/categories", saveCategory);
 // -------------------- USER MANAGEMENT ROUTES --------------------
 // Serve user.ejs at the /users route
 routes.get("/users", (req, res) => {
-  res.render("user", { activePage: 'users' });
+  const userType = req.session.userType; // Get userType from session
+  res.render("user", { activePage: 'users', userType }); // Pass userType to the view
 });
 
 // Get all users (for display)
@@ -99,8 +150,8 @@ routes.get('/users/list', async (req, res) => {
 routes.post("/users", async (req, res) => {
   const { name, username, password, userType } = req.body;
   try {
-    const newUser = await User.create({ name, username, password, userType });
-    res.json(newUser);
+    const newUser  = await User.create({ name, username, password, userType });
+    res.json(newUser );
   } catch (error) {
     res.status(400).json({ error: "Error creating user" });
   }
@@ -114,7 +165,7 @@ routes.get("/users/:id", async (req, res) => {
     if (user) {
       res.json(user);
     } else {
-      res.status(404).json({ error: "User not found" });
+      res.status(404).json({ error: "User  not found" });
     }
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
@@ -129,7 +180,7 @@ routes.put("/users/:id", async (req, res) => {
   try {
     const user = await User.findByPk(id);
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(404).json({ error: "User  not found" });
     }
 
     user.name = name || user.name;
@@ -152,9 +203,9 @@ routes.delete("/users/:id", async (req, res) => {
     const user = await User.findByPk(id);
     if (user) {
       await user.destroy();
-      res.json({ message: "User deleted" });
+      res.json({ message: "User  deleted" });
     } else {
-      res.status(404).json({ error: "User not found" });
+      res.status(404).json({ error: "User  not found" });
     }
   } catch (error) {
     res.status(500).json({ error: "Error deleting user" });
@@ -197,7 +248,7 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage: storage }); // Use the defined storage
+const upload = multer ({ storage: storage }); // Use the defined storage
 
 // Route to add inventory and product
 routes.post('/inventory', upload.single('productImage'), addInventoryAndProduct);
@@ -333,6 +384,6 @@ routes.get('/inventories/:id', async (req, res) => {
 
 // -------------------- STATIC FILES AND OTHER ROUTES --------------------
 // Serve static files
-routes.use(express.static(path.join(__dirname, "public")));
+routes.use(express.static(path.join(__dirname, "public ")));
 
 module.exports = routes;

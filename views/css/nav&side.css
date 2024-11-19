@@ -356,3 +356,8 @@ nav .profile .profile-link a:hover {
 }
 
 
+.disabled {
+  pointer-events: none; /* Prevent clicking */
+  color: var(--dark-grey); /* Change color to indicate it's disabled */
+  opacity: 0.6; /* Make it look faded */
+}

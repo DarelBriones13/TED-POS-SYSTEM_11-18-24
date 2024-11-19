@@ -17,9 +17,12 @@
         <div class="left-section">
           <div class="form login">
             <span class="title">Please enter your credentials</span>
+            <% if (typeof errorMessage !== 'undefined') { %>
+              <div class="error-message"><%= errorMessage %></div>
+            <% } %>
             <form action="/login" method="POST">
               <div class="input-field">
-                <input type="text" name="username" placeholder="Enter your username" required />
+                <input type="text" name="username" placeholder="Enter your username" value="<%= typeof username !== 'undefined' ? username : '' %>" required />
                 <i class="uil uil-user icon"></i>
               </div>
               <div class="input-field">

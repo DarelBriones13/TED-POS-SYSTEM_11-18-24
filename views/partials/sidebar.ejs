@@ -23,34 +23,62 @@
                 <a href="/takeorders" class="<%= activePage === 'takeorders' ? 'active' : '' %>"><i class="bx bxs-cart icon"></i> Take Orders</a>
             </li>
             <li class="divider" data-text="Management">Management</li>
-            <li>
-                <a href="/inventory" class="<%= activePage === 'inventory' ? 'active' : '' %>"><i class="bx bx-archive icon"></i> Inventory</a>
-            </li>
-            <li>
-                <a href="/supplier" class="<%= activePage === 'supplier' ? 'active' : '' %>"><i class="bx bxs-truck icon"></i> Supplier</a>
-            </li>
-            <li>
-                <a href="/categories" class="<%= activePage === 'categories' ? 'active' : '' %>"><i class="bx bxs-folder icon"></i> Categories</a>
-            </li>
-            <li>
-                <a href="/products" class="<%= activePage === 'products' ? 'active' : '' %>"><i class="bx bxs-package icon"></i> Product</a>
-            </li>
-            <!-- Dropdown for Bundle -->
-            <li class="dropdown">
-                <a href="#"><i class="bx bxs-archive icon"></i> Bundle</a>
-                <ul class="dropdown-content">
-                    <li><a href="/addbundle" >Add Bundle</a></li>
-                    <li><a href="/bundleslist">View Bundle</a></li>
-                </ul>
-            </li>
+            <% if (userType === 'Admin' || userType === 'Manager') { %>
+                <li>
+                    <a href="/inventory" class="<%= activePage === 'inventory' ? 'active' : '' %>"><i class="bx bx-archive icon"></i> Inventory</a>
+                </li>
+                <li>
+                    <a href="/supplier" class="<%= activePage === 'supplier' ? 'active' : '' %>"><i class="bx bxs-truck icon"></i> Supplier</a>
+                </li>
+                <li>
+                    <a href="/categories" class="<%= activePage === 'categories' ? 'active' : '' %>"><i class="bx bxs-folder icon"></i> Categories</a>
+                </li>
+                <li>
+                    <a href="/products" class="<%= activePage === 'products' ? 'active' : '' %>"><i class="bx bxs-package icon"></i> Product</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#"><i class="bx bxs-archive icon"></i> Bundle</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/addbundle">Add Bundle</a></li>
+                        <li><a href="/bundleslist">View Bundle</a></li>
+                    </ul>
+                </li>
+            <% } else { %>
+                <li>
+                    <a href="#" class="disabled"><i class="bx bx-archive icon"></i> Inventory</a>
+                </li>
+                <li>
+                    <a href="#" class="disabled"><i class="bx bxs-truck icon"></i> Supplier</a>
+                </li>
+                <li>
+                    <a href="#" class="disabled"><i class="bx bxs-folder icon"></i> Categories</a>
+                </li>
+                <li>
+                    <a href="#" class="disabled"><i class="bx bxs-package icon"></i> Product</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#"><i class="bx bxs-archive icon"></i> Bundle</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#" class="disabled">Add Bundle</a></li>
+                        <li><a href="#" class="disabled">View Bundle</a></li>
+                    </ul>
+                </li>
+            <% } %>
+
             <li class="divider" data-text="Reports">Reports</li>
             <li>
-                <a href="salereport" class="<%= activePage === 'salereport' ? 'active' : '' %>"><i class="bx bxs-report icon"></i> Sales Report</a>
+                <a href="salereport" class="<%= activePage === 'salereport' ? 'active' : '' %>"><i class="bx bxs-report icon "></i> Sales Report</a>
             </li>
             <li class="divider" data-text="System Management">System Management</li>
-            <li>
-                <a href="/users" class="<%= activePage === 'users' ? 'active' : '' %>"><i class="bx bxs-user-check icon"></i> Users</a>
-            </li>
+            <% if (userType === 'Admin' || userType === 'Manager') { %>
+                <li>
+                    <a href="/users" class="<%= activePage === 'users' ? 'active' : '' %>"><i class="bx bxs-user-check icon"></i> Users</a>
+                </li>
+            <% } else { %>
+                <li>
+                    <a href="#" class="disabled"><i class="bx bxs-user-check icon"></i> Users</a>
+                </li>
+            <% } %>
         </ul>
     </section>
     <!-- NAVBAR -->
@@ -66,7 +94,9 @@
                 <img src="/images/profile icon.png" alt="" />
                 <ul class="profile-link">
                     <li><a href="#"><i class="bx bxs-cog"></i> Settings</a></li>
-                    <li><a href="#"><i class="bx bxs-log-out-circle"></i> Logout</a></li>
+                    <li>
+                        <a href="/logout"><i class="bx bxs-log-out-circle icon"></i> Logout</a>
+                    </li>
                 </ul>
             </div>
         </nav>
