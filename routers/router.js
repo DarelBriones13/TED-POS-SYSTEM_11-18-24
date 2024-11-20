@@ -19,7 +19,6 @@ routes.get("/login", (req, res) => {
 routes.post("/login", login); // Login form submission
 
 
-
 // Add this route to your router.js
 routes.get("/logout", (req, res) => {
   req.session.destroy(err => {
@@ -296,7 +295,7 @@ routes.get("/products/list", async (req, res) => {
   }
 });
 
-// Update inventory and product
+  // Update inventory and product
 routes.put('/inventory/:id', upload.single('productImage'), async (req, res) => {
   const inventoryId = req.params.id;
   const {
@@ -318,10 +317,19 @@ routes.put('/inventory/:id', upload.single('productImage'), async (req, res) => 
   const transaction = await db.sequelize.transaction(); // Start a transaction
 
   try {
-    // Update the product
-    const product = await db.products.findOne({ where: { product_id: req.body.productId } });
-    if (!product) return res.status(404).json({ error: 'Product not found' });
+    // Find the inventory entry
+    const inventory = await db.inventory.findOne({ where: { inventory_id: inventoryId } });
+    if (!inventory) {
+      return res.status(404).json({ error: 'Inventory not found' });
+    }
 
+    // Find the product associated with the inventory
+    const product = await db.products.findOne({ where: { product_id: inventory.product_id } });
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    // Update the product fields (excluding product_id)
     product.product_name = productName;
     product.product_model = productModel;
     product.product_quantity = stock;
@@ -331,11 +339,6 @@ routes.put('/inventory/:id', upload.single('productImage'), async (req, res) => 
     await product.save();
 
     // Update the inventory entry
-    const inventory = await db.inventory.findOne({ where: { inventory_id: inventoryId } });
-    if (!inventory) {
-      return res.status(404).json({ error: 'Inventory not found' });
-    }
-
     inventory.stocks = stock;
     inventory.date_received = dateReceived;
     inventory.supplier_id = supplierId;

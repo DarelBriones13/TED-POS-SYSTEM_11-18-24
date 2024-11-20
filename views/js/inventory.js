@@ -108,7 +108,7 @@ $(document).ready(function() {
     });
   }
 
-  // Display a specific page of inventory items
+  // Display a specific page of inventory items ```javascript
   function displayPage(page) {
     const inventoryList = $('#inventoryList');
     inventoryList.empty(); // Clear existing rows
@@ -120,7 +120,7 @@ $(document).ready(function() {
       const item = allItems[i];
       const row = `
         <tr>
- <td>${item.inventory_id}</td>
+          <td>${item.inventory_id}</td>
           <td>${item.product.product_name}</td>
           <td>${item.product.product_model}</td>
           <td>${item.Supplier.supplier_name}</td>
@@ -183,63 +183,54 @@ $(document).ready(function() {
   });
 
   // Show Edit Item modal and populate data
-$(document).on('click', '.bx-edit', function() {
-  const inventoryId = $(this).data('id');
-  
-  // Fetch the inventory item details
-  fetch(`/inventories/${inventoryId}`)
-    .then(response => response.json())
-    .then(data => {
-      // Populate the edit modal fields
-      $('#editProductName').val(data.product.product_name);
-      $('#editProductModel').val(data.product.product_model);
-      $('#editStock').val(data.stocks);
-      $('#editDateReceived').val(new Date(data.date_received).toISOString().split('T')[0]);
-      $('#editStatus').val(data.inventory_status);
-      $('#editPurchasePrice').val(data.product.purchase_price);
-      $('#editSellingPrice').val(data.product.selling_price);
+  $(document).on('click', '.bx-edit', function() {
+    const inventoryId = $(this).data('id');
 
-      // Set the product ID in the hidden input
-      $('#editProductId').val(data.product.product_id); // Ensure this is correct
-      
-      // Store the inventory ID in the form
-      $('#editItemForm').data('id', inventoryId);
-      
-      // Show the modal
-      editModal.style.display = "flex";
+    // Fetch the inventory item details
+    fetch(`/inventories/${inventoryId}`)
+        .then(response => response.json())
+        .then(data => {
+            $('#editProductName').val(data.product.product_name);
+            $('#editProductModel').val(data.product.product_model);
+            $('#editStock').val(data.stocks);
+            $('#editDateReceived').val(new Date(data.date_received).toISOString().split('T')[0]);
+            $('#editStatus').val(data.inventory_status);
+            $('#editPurchasePrice').val(data.product.purchase_price);
+            $('#editSellingPrice').val(data.product.selling_price);
 
-      // Initialize Select2
-      initializeSelect2(editModal);
-    })
-    .catch(error => console.error("Error fetching inventory details:", error));
-});
+            // Set the product ID in the hidden input field
+            $('#editProductId').val(data.product.product_id); // Ensure this is correct
 
- // Handle form submission for editing an item
-$('#editItemForm').submit(function(e) {
-  e.preventDefault();
-
-  const inventoryId = $(this).data('id'); // Get the inventory ID from the form
-  const productId = $('#editProductId').val(); // Get the product ID from the hidden input
-  console.log("Submitting form with inventoryId:", inventoryId, "and productId:", productId); // Log both IDs
-
-  const formData = new FormData(this); // This includes all form fields
-
-  $.ajax({
-    url: `/inventory/${inventoryId}`, // Adjust the URL to your route for updating inventory and product
-    method: 'PUT',
-    data: formData,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-      alert(response.message);
-      editModal.style.display = "none"; // Hide the modal
-      fetchInventoryData(); // Fetch updated inventory data
-    },
-    error: function(xhr) {
-      alert('Error updating item: ' + xhr.responseJSON.error);
-    }
+            $('#editItemForm').data('id', inventoryId); // Store the inventory ID
+            editModal.style.display = "flex"; // Show the modal
+            initializeSelect2(editModal); // Initialize Select2
+        })
+        .catch(error => console.error("Error fetching inventory details:", error));
   });
-});
+
+  // Handle form submission for editing an item
+  $('#editItemForm').submit(function(e) {
+    e.preventDefault();
+
+    const inventoryId = $(this).data('id'); // Get the inventory ID from the form
+    const formData = new FormData(this); // This includes all form fields
+
+    $.ajax({
+      url: `/inventory/${inventoryId}`, // Adjust the URL to your route for updating inventory and product
+      method: 'PUT',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(response) {
+        alert(response.message);
+        editModal.style.display = "none"; // Hide the modal
+        fetchInventoryData(); // Fetch updated inventory data
+      },
+      error: function(xhr) {
+        alert('Error updating item: ' + xhr.responseJSON.error);
+      }
+    });
+  });
 
   // Call the function to fetch inventory data when the page loads
   fetchInventoryData();
